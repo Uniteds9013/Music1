@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="age calculator.css"> -->
+  <style type="text/css">
+    
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+ 
+#age-calculator {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+ 
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+ 
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+ 
+button {
+  padding: 8px 16px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+ 
+button:hover {
+  background-color: #0056b3;
+}
+ 
+p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+  </style>
+  <title>Age Calculator</title>
+</head>
+<body>
+  <div id="age-calculator">
+    <h2>Age Calculator</h2>
+    <label for="birth-date">Enter Your Birthdate:</label>
+    <input type="date" id="birth-date">
+    <button id="calculate-button">Calculate Age</button>
+    <p id="result"></p>
+  </div>
+  <!-- <script src="age calculator.js"></script> -->
+  <script type="text/javascript">
+    
+    document.addEventListener('DOMContentLoaded', function() {
+  const calculateButton = document.getElementById('calculate-button');
+  const birthDateInput = document.getElementById('birth-date');
+  const resultElement = document.getElementById('result');
+ 
+  calculateButton.addEventListener('click', function() {
+    const birthDate = new Date(birthDateInput.value);
+    const currentDate = new Date();
+ 
+    const ageInMilliseconds = currentDate - birthDate;
+    const ageInSeconds = ageInMilliseconds / 1000;
+ 
+    const seconds = ageInSeconds;
+    const minutes = ageInSeconds / 60;
+    const hours = ageInSeconds / 3600;
+    const days = ageInSeconds / 86400;
+    const weeks = days / 7;
+    const months = days / 30.44; // Approximate average month length
+    const years = days / 365.25; // Approximate average year length
+ 
+    resultElement.innerHTML = `Result<br>
+      Age:<br>
+      ${Math.floor(years)} years ${Math.floor(months % 12)} months ${Math.floor(days % 30.44)} days<br>
+      or ${Math.floor(months)} months ${Math.floor(days % 30.44)} days<br>
+      or ${Math.floor(weeks)} weeks ${Math.floor(days % 7)} days<br>
+      or ${Math.floor(days)} days<br>
+      or ${Math.floor(hours)} hours<br>
+      or ${Math.floor(minutes)} minutes<br>
+      or ${Math.floor(seconds)} seconds`;
+  });
+});
+  </script>
+</body>
+</html>
